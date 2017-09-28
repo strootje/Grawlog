@@ -1,0 +1,34 @@
+cmake_minimum_required(VERSION 3.3.0)
+project(Grawlog VERSION 0.1.0 LANGUAGES CXX)
+
+option(BUILD_DOCS "TODO: DESCRIPTION" OFF)
+option(BUILD_SPECS "TODO: DESCRIPTION" OFF)
+option(BUILD_TESTS "TODO: DESCRIPTION" OFF)
+
+set(DIR_BASE ${CMAKE_CURRENT_SOURCE_DIR})
+set(DIR_EXAMPLES ${DIR_BASE}/examples)
+set(DIR_INCLUDE ${DIR_BASE}/include)
+set(DIR_SPECS ${DIR_BASE}/specs)
+set(DIR_SRC ${DIR_BASE}/src)
+set(DIR_TESTS ${DIR_BASE}/tests)
+
+set(TARGET_NAME ${PROJECT_NAME})
+set(TARGET_SOURCES ${DIR_SRC}/Entry.cpp
+	${DIR_SRC}/Logger.cpp
+	${DIR_SRC}/ManagerImpl.cpp)
+
+add_library(${TARGET_NAME} ${TARGET_SOURCES})
+target_include_directories(${TARGET_NAME} PRIVATE ${DIR_INCLUDE})
+
+install(TARGETS ${TARGET_NAME}
+	RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
+	LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+	ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+install(DIRECTORY ${DIR_INCLUDE}
+	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME})
+
+# if(${BUILD_SPECS} OR ${BUILD_TESTS})
+# 	enable_testing()
+# 	add_subdirectory(${DIR_SPECS})
+# 	add_subdirectory(${DIR_TESTS})
+# endif()
