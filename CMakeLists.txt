@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.3.0)
 project(Grawlog VERSION 0.1.0 LANGUAGES CXX)
 
+include(GenerateExportHeader)
+
 option(BUILD_DOCS "TODO: DESCRIPTION" OFF)
 option(BUILD_SPECS "TODO: DESCRIPTION" OFF)
 option(BUILD_TESTS "TODO: DESCRIPTION" OFF)
@@ -17,18 +19,40 @@ set(TARGET_SOURCES ${DIR_SRC}/Entry.cpp
 	${DIR_SRC}/Logger.cpp
 	${DIR_SRC}/ManagerImpl.cpp)
 
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+	set(TARGET_COMPILER_FLAGS "${TARGET_COMPILER_FLAGS} /std:c++latest")
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+	set(TARGET_COMPILER_FLAGS "${TARGET_COMPILER_FLAGS} -std=c++0z")
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+	set(TARGET_COMPILER_FLAGS "${TARGET_COMPILER_FLAGS} -std=gnu++1z")
+else()
+endif()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TARGET_COMPILER_FLAGS}")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${TARGET_LINKED_FLAGS}")
+
+
 add_library(${TARGET_NAME} ${TARGET_SOURCES})
+generate_export_header(${TARGET_NAME})
 target_include_directories(${TARGET_NAME} PRIVATE ${DIR_INCLUDE})
 
-install(TARGETS ${TARGET_NAME}
+install(TARGETS ${TARGET_NAME} EXPORT ${TARGET_NAME}Targets
 	RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
 	LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
 	ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
-install(DIRECTORY ${DIR_INCLUDE}
-	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME})
+install(DIRECTORY ${DIR_INCLUDE}/
+	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME} COMPONENT Devel)
 
-# if(${BUILD_SPECS} OR ${BUILD_TESTS})
-# 	enable_testing()
-# 	add_subdirectory(${DIR_SPECS})
-# 	add_subdirectory(${DIR_TESTS})
-# endif()
+if(${BUILD_SPECS} OR ${BUILD_TESTS})
+	enable_testing()
+	add_subdirectory(${DIR_SPECS})
+	add_subdirectory(${DIR_TESTS})
+endif()
+
+if(COMMAND setup_solution)
+	setup_solution(${PROJECT_NAME} ${TARGET_NAME} "${TARGET_DEPS}")
+else()
+	foreach(TARGET_DEP ${TARGET_DEPS})
+		find_package(${TARGET_DEP} REQUIRED)
+	endforeach()
+endif()
