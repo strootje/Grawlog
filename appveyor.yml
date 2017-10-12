@@ -27,4 +27,4 @@ install:
   - conan user # It creates the conan data directory
 
 test_script:
-  - python .appveyor/build.py
+  - python .conan/build.py
