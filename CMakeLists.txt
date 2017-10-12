@@ -1,21 +1,25 @@
 cmake_minimum_required(VERSION 3.3.0)
 project(Grawlog VERSION 0.1.0 LANGUAGES CXX)
 
-include(GenerateExportHeader)
+include(GoogleTest)
+enable_testing()
 
-option(BUILD_DOCS "TODO: DESCRIPTION" OFF)
-option(BUILD_SPECS "TODO: DESCRIPTION" OFF)
-option(BUILD_TESTS "TODO: DESCRIPTION" OFF)
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup(TARGETS)
+
+option(BUILD_DOCS "TODO: Build documentation" OFF)
+option(BUILD_SPECS "TODO: Build scenario's" OFF)
+option(BUILD_TESTS "Build tests" OFF)
 
 set(DIR_BASE ${CMAKE_CURRENT_SOURCE_DIR})
-set(DIR_EXAMPLES ${DIR_BASE}/examples)
 set(DIR_INCLUDE ${DIR_BASE}/include)
 set(DIR_SPECS ${DIR_BASE}/specs)
 set(DIR_SRC ${DIR_BASE}/src)
 set(DIR_TESTS ${DIR_BASE}/tests)
 
 set(TARGET_NAME ${PROJECT_NAME})
-set(TARGET_SOURCES ${DIR_SRC}/Entry.cpp
+set(TARGET_SOURCES
+	${DIR_SRC}/Entry.cpp
 	${DIR_SRC}/Logger.cpp
 	${DIR_SRC}/ManagerImpl.cpp)
 
@@ -31,28 +35,6 @@ endif()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TARGET_COMPILER_FLAGS}")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${TARGET_LINKED_FLAGS}")
 
-
-add_library(${TARGET_NAME} ${TARGET_SOURCES})
-generate_export_header(${TARGET_NAME})
-target_include_directories(${TARGET_NAME} PRIVATE ${DIR_INCLUDE})
-
-install(TARGETS ${TARGET_NAME} EXPORT ${TARGET_NAME}Targets
-	RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
-	LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-	ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
-install(DIRECTORY ${DIR_INCLUDE}/
-	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME} COMPONENT Devel)
-
-if(${BUILD_SPECS} OR ${BUILD_TESTS})
-	enable_testing()
-	add_subdirectory(${DIR_SPECS})
-	add_subdirectory(${DIR_TESTS})
-endif()
-
-if(COMMAND setup_solution)
-	setup_solution(${PROJECT_NAME} ${TARGET_NAME} "${TARGET_DEPS}")
-else()
-	foreach(TARGET_DEP ${TARGET_DEPS})
-		find_package(${TARGET_DEP} REQUIRED)
-	endforeach()
-endif()
+add_subdirectory(${DIR_SRC})
+add_subdirectory(${DIR_SPECS})
+add_subdirectory(${DIR_TESTS})
