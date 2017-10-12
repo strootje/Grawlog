@@ -6,9 +6,9 @@ environment:
     PYTHON_ARCH: "32"
 
     CONAN_REFERENCE: "Grawlog/0.1"
-    CONAN_USERNAME: "user"
-    CONAN_LOGIN_USERNAME: "user"
-    CONAN_CHANNEL: "channel"
+    CONAN_USERNAME: "strootje"
+    CONAN_LOGIN_USERNAME: "strootje"
+    CONAN_CHANNEL: "conan"
     VS150COMNTOOLS: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\Tools\\"
     
     matrix:
