@@ -22,5 +22,4 @@ fi
 pip install conan --upgrade
 pip install conan_package_tools
 
-conan remote add conan/community https://api.bintray.com/conan/conan-community/conan
 conan user

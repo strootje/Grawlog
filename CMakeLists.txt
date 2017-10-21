@@ -26,9 +26,6 @@ set(TARGET_SOURCES
 	${DIR_SRC}/Logger.cpp
 	${DIR_SRC}/ManagerImpl.cpp)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TARGET_COMPILER_FLAGS}")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${TARGET_LINKED_FLAGS}")
-
 add_subdirectory(${DIR_SRC})
 add_subdirectory(${DIR_SPECS})
 add_subdirectory(${DIR_TESTS})
