@@ -11,3 +11,4 @@ if [[ "$(uname -s)" == 'Darwin' ]]; then
 fi
 
 python .conan/build.py
+conan create -tf tests/PackageTests
