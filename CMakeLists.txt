@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.3.0)
 project(Grawlog VERSION 0.1.0 LANGUAGES CXX)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CXX_STANDARD TRUE)
+set(GTEST_LANG_CXX11 ON)
+
 include(GoogleTest)
 enable_testing()
 
@@ -10,9 +14,6 @@ conan_basic_setup(TARGETS)
 option(BUILD_DOCS "TODO: Build documentation" OFF)
 option(BUILD_SPECS "TODO: Build scenario's" OFF)
 option(BUILD_TESTS "Build tests" OFF)
-
-set(CMAKE_CXX_STANDARD 17)
-set(CXX_STANDARD TRUE)
 
 set(DIR_BASE ${CMAKE_CURRENT_SOURCE_DIR})
 set(DIR_INCLUDE ${DIR_BASE}/include)
