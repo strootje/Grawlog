@@ -20,9 +20,6 @@ class GrawlogConan(ConanFile):
     def configure(self):
         self.options["gtest"].shared = self.options.shared
 
-        if self.settings.compiler == "Visual Studio":
-            self.options.cxx11 = True 
-
     def build(self):
         cmake = CMake(self)
         cmake.definitions["BUILD_SHARED_LIBS"] = 'ON' if self.options["shared"] == True else 'OFF'
