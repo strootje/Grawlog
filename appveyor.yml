@@ -17,11 +17,11 @@ environment:
         # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
         #   CONAN_VISUAL_VERSIONS: 12
         - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+          CXXFLAGS: /std:c++latest
           CONAN_VISUAL_VERSIONS: 14
-          CXXFLAGS: /std:c++latest
         - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-          CONAN_VISUAL_VERSIONS: 15
           CXXFLAGS: /std:c++latest
+          CONAN_VISUAL_VERSIONS: 15
 
 
 install:
