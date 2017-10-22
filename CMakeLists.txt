@@ -20,6 +20,15 @@ set(DIR_SPECS ${DIR_BASE}/specs)
 set(DIR_SRC ${DIR_BASE}/src)
 set(DIR_TESTS ${DIR_BASE}/tests)
 
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++latest")
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0z")
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++1z")
+else()
+endif()
+
 set(TARGET_NAME ${PROJECT_NAME})
 set(TARGET_SOURCES
 	${DIR_SRC}/Entry.cpp
