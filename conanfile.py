@@ -9,7 +9,7 @@ class GrawlogConan(ConanFile):
     url = "https://github.com/strootje/grawlog"
 
     settings = "os", "compiler", "build_type", "arch"
-    options = { "shared": [True, False], "build_docs": [True, False], "build_specs": [True, False], "build_tests": [True, False], "cxx11": [True, False] }
+    options = { "shared": [True, False], "build_docs": [True, False], "build_specs": [True, False], "build_tests": [True, False] }
     default_options = "shared=False", "build_docs=False", "build_specs=False", "build_tests=False", "cxx11=True"
 
     generators = "cmake"
@@ -25,11 +25,10 @@ class GrawlogConan(ConanFile):
 
     def build(self):
         cmake = CMake(self)
-        cmake.definitions["BUILD_SHARED_LIBS"] = True if self.options["shared"] == True else False
-        cmake.definitions["BUILD_DOCS"] = 1 if self.options["build_docs"] == True else 0
-        cmake.definitions["BUILD_SPECS"] = 1 if self.options["build_specs"] == True else 0
-        cmake.definitions["BUILD_TESTS"] = 1 if self.options["build_tests"] == True else 0
-        cmake.definitions["GTEST_LANG_CXX11"] = 1 if self.options["cxx11"] == True else 0
+        cmake.definitions["BUILD_SHARED_LIBS"] = 'ON' if self.options["shared"] == True else 'OFF'
+        cmake.definitions["BUILD_DOCS"] = 'ON' if self.options["build_docs"] == True else 'OFF'
+        cmake.definitions["BUILD_SPECS"] = 'ON' if self.options["build_specs"] == True else 'OFF'
+        cmake.definitions["BUILD_TESTS"] = 'ON' if self.options["build_tests"] == True else 'OFF'
         cmake.configure()
         cmake.build()
 
