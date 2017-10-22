@@ -10,7 +10,7 @@ class GrawlogConan(ConanFile):
 
     settings = "os", "compiler", "build_type", "arch"
     options = { "shared": [True, False], "build_docs": [True, False], "build_specs": [True, False], "build_tests": [True, False] }
-    default_options = "shared=False", "build_docs=False", "build_specs=False", "build_tests=False", "cxx11=True"
+    default_options = "shared=False", "build_docs=False", "build_specs=False", "build_tests=False"
 
     generators = "cmake"
     exports_sources = "*"
