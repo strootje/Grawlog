@@ -28,6 +28,7 @@ class GrawlogConan(ConanFile):
         cmake.definitions["BUILD_TESTS"] = 'ON' if self.options["build_tests"] == True else 'OFF'
         cmake.configure()
         cmake.build()
+        self.run('ctest -C %s' % self.settings.build_type)
 
     def package(self):
         self.copy("*.hpp", dst="include/Grawlog", src="include")
