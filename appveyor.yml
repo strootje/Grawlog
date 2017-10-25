@@ -33,4 +33,3 @@ install:
 
 test_script:
   - python .conan/build.py
-  - ctest -C Release build

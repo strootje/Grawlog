@@ -5,9 +5,7 @@
 #include "./Manager.hpp"
 #include "./Writer.hpp"
 #include <algorithm>
-#include <functional>
 #include <list>
-#include <map>
 #include <memory>
 
 namespace Grawlog
@@ -15,8 +13,7 @@ namespace Grawlog
 	class ManagerImpl : public Manager
 	{
 	private:
-		typedef std::map<std::string, Factory> FactoryMap;
-		typedef std::list<std::shared_ptr<const Writer>> WriterList;
+		typedef std::list<Writer*> WriterList;
 
 	public:
 		static Manager* Instance();
@@ -25,11 +22,10 @@ namespace Grawlog
 		void Dispose();
 
 	public:
-		void Register( const std::string& name, Factory factory );
 		void Log( const Entry& entry, const std::string& message ) const;
 
 	private:
-		FactoryMap _factories;
+		bool _loaded;
 		WriterList _writers;
 	};
 }

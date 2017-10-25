@@ -22,6 +22,7 @@ set(DIR_TESTS ${DIR_BASE}/tests)
 
 set(TARGET_NAME ${PROJECT_NAME})
 set(TARGET_SOURCES
+	${DIR_SRC}/Writers/Stream.cpp
 	${DIR_SRC}/Entry.cpp
 	${DIR_SRC}/Logger.cpp
 	${DIR_SRC}/ManagerImpl.cpp)
