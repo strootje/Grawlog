@@ -10,6 +10,7 @@ namespace Grawlog
 
 		if (!instance._loaded)
 		{
+			// TODO: add config loading here
 			auto writer = new Writers::Stream(&std::cout);
 			instance._writers.push_back(writer);
 			instance._loaded = true;

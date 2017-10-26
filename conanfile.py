@@ -2,7 +2,7 @@ from conans import ConanFile, CMake
 
 class GrawlogConan(ConanFile):
     name = "Grawlog"
-    version = "0.1"
+    version = "1.0"
 
     license = "MPL-2.0"
     description = "Sane Logging Library for cpp"
