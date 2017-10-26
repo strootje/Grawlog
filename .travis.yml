@@ -22,10 +22,10 @@ osx: &osx
 matrix:
    include:
       # - <<: *linux
-      #   env: CONAN_CLANG_VERSIONS=3.9 CXXFLAGS="-std=c++17" CONAN_DOCKER_IMAGE=lasote/conanclang39
+      #   env: CONAN_CLANG_VERSIONS=3.9 CONAN_DOCKER_IMAGE=lasote/conanclang39
 
       - <<: *linux
-        env: CONAN_CLANG_VERSIONS=4.0 CXXFLAGS="-std=c++17" CONAN_DOCKER_IMAGE=lasote/conanclang40
+        env: CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40
 
 install:
   - chmod +x .travis/install.sh
