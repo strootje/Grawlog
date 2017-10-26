@@ -5,7 +5,7 @@ environment:
     PYTHON_VERSION: "2.7.8"
     PYTHON_ARCH: "32"
 
-    CONAN_REFERENCE: "Grawlog/0.1"
+    CONAN_REFERENCE: "Grawlog/1.0"
     CONAN_USERNAME: "strootje"
     CONAN_LOGIN_USERNAME: "strootje"
     CONAN_CHANNEL: "conan"

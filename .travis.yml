@@ -1,6 +1,6 @@
 env:
    global:
-     - CONAN_REFERENCE: "Grawlog/0.1"
+     - CONAN_REFERENCE: "Grawlog/1.0"
      - CONAN_USERNAME: "strootje"
      - CONAN_LOGIN_USERNAME: "strootje"
      - CONAN_CHANNEL: "conan"
