@@ -11,4 +11,6 @@ if [[ "$(uname -s)" == 'Darwin' ]]; then
 fi
 
 # python .conan/build.py
-conan create strootje/stable --build missing -tf ./tests/PackageTests
+mkdir build
+cd build
+conan create strootje/stable --cw ./.. --build missing -tf ./tests/PackageTests
