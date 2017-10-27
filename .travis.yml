@@ -1,11 +1,11 @@
 env:
    global:
      - CONAN_REFERENCE: "Grawlog/1.0"
-     - CONAN_USERNAME: "strootje"
      - CONAN_LOGIN_USERNAME: "strootje"
+     - CONAN_USERNAME: "strootje"
      - CONAN_CHANNEL: "conan"
-     - CONAN_UPLOAD: "https://api.bintray.com/conan/strootje/conan"
      - CONAN_REMOTES: "https://api.bintray.com/conan/conan-community/conan"
+     - CONAN_UPLOAD: "https://api.bintray.com/conan/strootje/conan"
 
 linux: &linux
    os: linux
@@ -21,9 +21,6 @@ osx: &osx
 
 matrix:
    include:
-      # - <<: *linux
-      #   env: CONAN_CLANG_VERSIONS=3.9 CONAN_DOCKER_IMAGE=lasote/conanclang39
-
       - <<: *linux
         env: CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40
 
