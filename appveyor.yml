@@ -25,4 +25,5 @@ install:
   - conan user
 
 test_script:
-  - python .conan/build.py
+  # - python .conan/build.py
+  - conan create strootje/stable --build missing -tf ./tests/PackageTests

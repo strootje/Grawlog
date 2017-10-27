@@ -10,4 +10,5 @@ if [[ "$(uname -s)" == 'Darwin' ]]; then
     pyenv activate conan
 fi
 
-python .conan/build.py
+# python .conan/build.py
+conan create strootje/stable --build missing -tf ./tests/PackageTests
