@@ -17,7 +17,6 @@ environment:
         - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
           CONAN_VISUAL_VERSIONS: 15
 
-
 install:
   - ps: wget https://cmake.org/files/v3.10/cmake-3.10.0-rc3-win64-x64.zip -OutFile cmake.zip
   - cmd: 7z x cmake.zip -o"C:\projects" -y > nul
