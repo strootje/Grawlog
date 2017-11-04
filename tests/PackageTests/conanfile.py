@@ -1,7 +1,7 @@
 from conans import ConanFile, CMake
 import os
 
-class GrawlogTestConan(ConanFile):
+class PackageTestConan(ConanFile):
 	settings = "os", "compiler", "build_type", "arch"
 	generators = "cmake"
 
@@ -17,4 +17,4 @@ class GrawlogTestConan(ConanFile):
 
 	def test(self):
 		os.chdir("bin")
-		self.run(".%sGrawlog.PackageTests" % os.sep)
+		self.run(".%sPackageTests" % os.sep)
