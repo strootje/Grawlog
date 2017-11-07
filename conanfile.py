@@ -1,6 +1,6 @@
 from conans import ConanFile, CMake
 
-class GrawlogConan(ConanFile):
+class BuildConan(ConanFile):
     name = "Grawlog"
     version = "1.0"
 
