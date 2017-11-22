@@ -17,12 +17,34 @@
 
 namespace Grawlog
 {
+	/**
+	 * Severity indicator enum
+	 */
 	enum class Severity
 	{
+		/**
+		 * Only used for debugging
+		 */
 		Diagnostic,
+
+		/**
+		 * Write to the information sink
+		 */
 		Information,
+
+		/**
+		 * Write to the warning sink
+		 */
 		Warning,
+
+		/**
+		 * Write to the error sink
+		 */
 		Error,
+
+		/**
+		 * Write to the fatal sink
+		 */
 		Fatal
 	};
 }

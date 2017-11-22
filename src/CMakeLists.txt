@@ -1,3 +1,9 @@
+# setup sources
+set(TARGET_SOURCES
+	${DIR_SRC}/Writers/Stream.cpp
+	${DIR_SRC}/Entry.cpp
+	${DIR_SRC}/Logger.cpp
+	${DIR_SRC}/ManagerImpl.cpp)
 
 add_library(${TARGET_NAME} ${TARGET_SOURCES})
 target_include_directories(${TARGET_NAME} PRIVATE ${DIR_INCLUDE})
