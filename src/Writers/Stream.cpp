@@ -1,6 +1,6 @@
 #include "./Writers/Stream.hpp"
 
-namespace Grawlog { namespace Writers
+namespace Grawlog::Writers
 {
 	Stream::Stream( std::ostream* output )
 		: _output(output)
@@ -36,4 +36,4 @@ namespace Grawlog { namespace Writers
 
 		(*_output) << std::endl;
 	}
-}}
+}

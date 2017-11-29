@@ -5,7 +5,7 @@
 #include "./Writer.hpp"
 #include <ostream>
 
-namespace Grawlog { namespace Writers
+namespace Grawlog::Writers
 {
 	class Stream : public Grawlog::Writer
 	{
@@ -18,6 +18,6 @@ namespace Grawlog { namespace Writers
 	private:
 		std::ostream* _output;
 	};
-}}
+}
 
 #endif

@@ -1,0 +1,94 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "build - debug",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared"
+			},
+
+			"options": {
+				"cwd": "${workspaceFolder}/build"
+			},
+
+			"command": "conan install .. -sbuild_type=Debug -obuild_tests=True -orun_tests=False --build missing && conan build ..",
+			
+			"problemMatcher": {
+				"owner": "cpp",
+
+				"fileLocation": "absolute",
+				"pattern": {
+					"regexp": "^(.*)\\((\\d+)\\):\\s+(warning|error)\\s+([C]?\\d+):\\s+(.*)$",
+					"file": 1,
+					"line": 2,
+					"column": 3,
+					"severity": 4,
+					"message": 5
+				}
+			}
+		},
+		{
+			"type": "shell",
+			"label": "test - debug",
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared"
+			},
+
+			"options": {
+				"cwd": "${workspaceFolder}/build"
+			},
+
+			"command": "conan install .. -sbuild_type=Debug --build missing && conan build ..",
+
+			"problemMatcher": {
+				"owner": "cpp",
+
+				"fileLocation": "absolute",
+				"pattern": {
+					"regexp": "^(.*)\\((\\d+)\\):\\s+(warning|error)\\s+([C]?\\d+):\\s+(.*)$",
+					"file": 1,
+					"line": 2,
+					"column": 3,
+					"severity": 4,
+					"message": 5
+				}
+			}
+		},
+		{
+			"type": "shell",
+			"label": "clean",
+			"group": "none",
+			
+			"presentation": {
+				"echo": false,
+				"reveal": "never",
+				"focus": false,
+				"panel": "shared"
+			},
+
+			"options": {
+				"cwd": "${workspaceRoot}"
+			},
+
+			"command": "rm -rf build && mkdir build",
+			"problemMatcher": []
+		}
+	]
+}

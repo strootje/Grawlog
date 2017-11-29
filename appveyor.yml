@@ -18,9 +18,9 @@ environment:
           CONAN_VISUAL_VERSIONS: 15
 
 install:
-  - ps: wget https://cmake.org/files/v3.10/cmake-3.10.0-rc3-win64-x64.zip -OutFile cmake.zip
+  - ps: wget https://cmake.org/files/v3.10/cmake-3.10.0-win64-x64.zip -OutFile cmake.zip
   - cmd: 7z x cmake.zip -o"C:\projects" -y > nul
-  - set PATH=C:\projects\cmake-3.10.0-rc3-win64-x64\bin\;%PATH%;%PYTHON%/Scripts/
+  - set PATH=C:\projects\cmake-3.10.0-win64-x64\bin\;%PATH%;%PYTHON%/Scripts/
   - pip.exe install conan --upgrade
   - pip.exe install conan_package_tools
   - conan user

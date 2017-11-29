@@ -4,20 +4,24 @@ set -e
 set -x
 
 if [[ "$(uname -s)" == 'Darwin' ]]; then
-    brew update || brew update
-    brew outdated pyenv || brew upgrade pyenv
-    brew install pyenv-virtualenv
-    brew install cmake || true
+	brew update || brew update
+	brew outdated pyenv || brew upgrade pyenv
+	brew install pyenv-virtualenv
+	brew install cmake || true
 
-    if which pyenv > /dev/null; then
-        eval "$(pyenv init -)"
-    fi
+	if which pyenv > /dev/null; then
+		eval "$(pyenv init -)"
+	fi
 
-    pyenv install 2.7.10
-    pyenv virtualenv 2.7.10 conan
-    pyenv rehash
-    pyenv activate conan
+	pyenv install 2.7.10
+	pyenv virtualenv 2.7.10 conan
+	pyenv rehash
+	pyenv activate conan
 fi
+
+wget https://cmake.org/files/v3.10/cmake-3.10.0-Linux-x86_64.tar.gz -O cmake.tar.gz
+tar -xzf cmake.tar.gz
+export PATH=./cmake-3.10.0-Linux-x86_64/bin;$PATH
 
 pip install conan --upgrade
 pip install conan_package_tools

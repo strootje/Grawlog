@@ -1,10 +1,10 @@
 # project setup
-cmake_minimum_required(VERSION 3.9)
-project(Grawlog VERSION 1.1.0 LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.10)
+project(Grawlog VERSION 1.0.0 LANGUAGES CXX)
 set(TARGET_NAME ${PROJECT_NAME})
 
 # use modern cxx
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CXX_STANDARD TRUE)
 
 # unit testing

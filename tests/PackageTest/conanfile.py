@@ -1,5 +1,5 @@
 from conans import ConanFile, CMake
-import os
+from os import chdir, sep
 
 class PackageTestConan(ConanFile):
 	settings = "os", "compiler", "build_type", "arch"
@@ -16,5 +16,5 @@ class PackageTestConan(ConanFile):
 		self.copy('*.so*', dst='bin', src='lib')
 
 	def test(self):
-		os.chdir("bin")
-		self.run(".%sPackageTests" % os.sep)
+		chdir("bin")
+		self.run(".%sPackageTests" % sep)

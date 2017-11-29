@@ -19,12 +19,14 @@ class BuildPackage(ConanFile):
 
 	options = {
 		"shared": [True, False],
-		"build_tests": [True, False]
+		"build_tests": [True, False],
+		"run_tests": [True, False]
 	}
 
 	default_options = (
 		"shared=False",
-		"build_tests=False"
+		"build_tests=True",
+		"run_tests=True"
 	)
 
 	requires = (
@@ -40,7 +42,9 @@ class BuildPackage(ConanFile):
 		cmake.definitions["BUILD_TESTS"] = 'ON' if self.options["build_tests"] == True else 'OFF'
 		cmake.configure()
 		cmake.build()
-		cmake.test()
+
+		if self.options.build_tests == True and self.options.run_tests == True:
+			cmake.test()
 
 	def package(self):
 		self.copy("*.hpp", dst="include/Grawlog", src="include")

@@ -9,4 +9,4 @@ if(NOT BUILD_TESTS)
 endif()
 
 # include test projects
-add_subdirectory(${BASE_DIR}/StreamWriterTests)
+add_subdirectory(${BASE_DIR}/UnitTests)

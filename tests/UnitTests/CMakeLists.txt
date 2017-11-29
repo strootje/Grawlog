@@ -1,7 +1,8 @@
 # setup test
 set(BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
-set(TEST_NAME ${TARGET_NAME}.StreamWriterTests)
-set(TEST_SOURCES ${BASE_DIR}/Program.cpp)
+set(TEST_NAME ${TARGET_NAME}.UnitTests)
+set(TEST_SOURCES
+	${BASE_DIR}/StreamWriterTests.cpp)
 
 add_executable(${TEST_NAME} ${TEST_SOURCES})
 add_dependencies(${TARGET_NAME}Tests ${TEST_NAME})
